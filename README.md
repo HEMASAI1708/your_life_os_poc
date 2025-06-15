@@ -1,7 +1,6 @@
   # Your Life OS - AI Life Operating System (POC)
 
-Your Life OS is a personal and organizational operating system—a comprehensive framework designed to help individuals and teams manage all aspects of their lives and work using intelligent, AI-driven support. 
-  This proof-of-concept demonstrates how intelligent agents, memory, and workflow automation can help you manage life and work.
+Your Life OS is a personal and organizational operating system—a comprehensive framework designed to help individuals and teams manage all aspects of their lives and work using intelligent, AI-driven support. This proof-of-concept demonstrates how intelligent agents, memory, and workflow automation can help you manage life and work.
 
   ---
 
