@@ -71,6 +71,8 @@ Your Life OS is a personal and organizational operating system—a comprehensive
     │ └── router.py # input routing logic
     ├── ui/
     │ └── app.py # Streamlit interface
+    ├── utils/
+    │ └── logger.py
     ├── tests/
     │ ├── test_memory_store.py
     │ ├── test_router.py
