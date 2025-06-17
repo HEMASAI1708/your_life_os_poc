@@ -1,5 +1,9 @@
 # Your Life OS POC specific files
 
+# Logs
+logs/
+*.log
+
 # App runtime memory file
 memory.json
 
