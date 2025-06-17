@@ -45,7 +45,7 @@ Your Life OS is a personal and organizational operating system—a comprehensive
 
   ## Tech Stack
 
-  | Layer           | Technology           |
+  | Layer          | Technology           |
   |----------------|----------------------|
   | UI             | Streamlit / Gradio   |
   | Agent Logic    | LangChain (Python)   |
@@ -58,43 +58,35 @@ Your Life OS is a personal and organizational operating system—a comprehensive
   ---
 
   ## Project Structure
-  your_life_os_poc/
-  │
-  ├── main.py # Entry point
-  │
-  ├── ui/
-  │ └── app.py # Streamlit UI
-  │
-  ├── agents/
-  │ ├── task_agent.py # Handles task-related prompts
-  │ ├── health_agent.py # Mocked health assistant
-  │ └── doc_agent.py # Summarization agent
-  │
-  ├── api/
-  │ └── router.py # LangChain-style input router
-  │
-  ├── memory/
-  │ └── store.py # Save/load user data (JSON or SQLite logic here)
-  │
-  ├── scheduler/
-  │ └── tasks.py # APScheduler jobs
-  │
-  ├── utils/
-  │ └── helpers.py # Utility functions
-  │
-  ├── Architecture/
-  │ ├── Image/
-  │ │ └── Architecture.png # Architecture diagram image
-  │ └── Description/
-  │ └── ArchitectureDescription.txt # Architecture breakdown in text
-  │
-  └── data/
-  └── README.md # Placeholder for static files
-
+    your_life_os_poc/
+    │
+    ├── main.py # App launcher
+    ├── memory/
+    │ └── store.py # save/load/delete task logic
+    ├── agents/
+    │ ├── task_agent.py # saves tasks
+    │ ├── health_agent.py # mock agent
+    │ └── doc_agent.py # summarizer via Ollama
+    ├── api/
+    │ └── router.py # input routing logic
+    ├── ui/
+    │ └── app.py # Streamlit interface
+    ├── tests/
+    │ ├── test_memory_store.py
+    │ ├── test_router.py
+    │ ├── test_task_agent.py
+    │ └── conftest.py
+    ├── Architecture/
+    │ ├── Image/Architecture.png
+    │ └── Description/ArchitectureDescription.txt
+    ├── requirements.txt
+    ├── .coveragerc
+    ├── .gitignore
+    └── README.md
   ---
 
   ### Getting Started
-
+  Refer to setUp.md file
   ---
   ### 1. Clone the Repository
 
