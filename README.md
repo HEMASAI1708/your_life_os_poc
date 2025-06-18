@@ -64,6 +64,7 @@ Your Life OS is a personal and organizational operating system—a comprehensive
     ├── memory/
     │ └── store.py # save/load/delete task logic
     ├── agents/
+    │ ├── chat_agent.py # replies via Ollama
     │ ├── task_agent.py # saves tasks
     │ ├── health_agent.py # mock agent
     │ └── doc_agent.py # summarizer via Ollama
