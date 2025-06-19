@@ -2,6 +2,7 @@ from langchain_ollama import OllamaLLM
 from agents.task_agent import handle_task
 from agents.health_agent import handle_health
 from agents.doc_agent import handle_doc_summary
+from agents.chat_agent import handle_chat
 from utils.logger import get_logger
 
 logger = get_logger()
@@ -31,19 +32,32 @@ Query: "{query}"
 Respond with just one word: task, health, summarize, or unknown.
 """
 
+def fallback_router(query_lower: str) -> str:
+    if any(word in query_lower for word in ["task", "remind", "todo", "note"]):
+        return "task"
+    elif any(word in query_lower for word in ["health", "sleep", "heartbeat", "wellness"]):
+        return "health"
+    elif any(word in query_lower for word in ["summarize", "summary", "tl;dr", "what is"]):
+        return "summarize"
+    return "unknown"
 
 def route_query(query: str) -> str:
-    logger.info(f"Received query: {query}")
+    query_lower = query.lower()
     classification_prompt = INTENT_PROMPT.format(query=query)
     intent = llm.invoke(classification_prompt).strip().lower()
 
-    logger.info(f"Intent classified as: {intent}")
+    if intent == "unknown":
+        logger.info("LLM returned 'unknown', falling back to keyword match.")
+        intent = fallback_router(query_lower)
 
-    if "task" in intent:
+    # Log the final intent classification
+    logger.info(f"Classified intent: {intent} for query: {query}")
+
+    if intent == "task":
         return handle_task(query)
-    elif "health" in intent:
+    elif intent == "health":
         return handle_health(query)
-    elif "summarize" in intent:
+    elif intent == "summarize":
         return handle_doc_summary(query)
     else:
-        return "🤖 I'm not sure how to handle that yet."
+        return handle_chat(query)
